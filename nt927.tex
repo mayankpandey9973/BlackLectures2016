@@ -95,7 +95,7 @@ equivalence class of the element of $\mathbb{Z}$. However, it will typically wil
 \begin{theorem}[Chinese remainder theorem]
 There is a bijection $$f:\mathbb{Z}/(n_1\dots n_m)\rightarrow \mathbb{Z}/(n_1)\times\dots\times\mathbb{Z}/(n_m)$$ for pairwise 
 relatively prime $n_1, \dots, n_m$. Also, we have that $f(a + b) = f(a) + f(b)$, and $f(ab) = f(a)f(b)$, where addition and
-multiplacation of elements in $\mathbb{Z}/(n_1)\times\dots\times\mathbb{Z}/(n_m)$ is done elementwise. 
+multiplacation of elements in $\mathbb{Z}/(n_1)\times\dots\times\mathbb{Z}/(n_m)$ is done element-wise. 
 (The Cartesian product $A\times B$ for two sets $A, B$ is the set of ordered pairs $(a, b)$ for $a\in A, b\in B$).
 
 Equivalently, if $n\equiv k_i\pmod{n_i}$ for $1 \le i\le m$, then there exists some unique $K$ modulo $n_1\dots n_m$ s.t. 
@@ -146,5 +146,81 @@ For all $a, p$ s.t. $p\nmid a$, $a^{p - 1}\equiv 1\pmod{p}$.
 \item Find the smallest positive integer that is congruent to $1\pmod{2}$, $0\pmod{3}$, $2\pmod{5}$, and $10\pmod{13}$.
 \item Find last 3 digits of $2^{2^{2^{2^{2^2}}}}$.
 \item Find the number of $0 < a\le 1001$ such that $a, a + 1,$ and $ a + 2$ are all relatively prime to $1001$.
+\item (Wilson's theorem) Show that $(p - 1)!\equiv -1\pmod{p}$ for all primes $p$.
+\item Show that for odd primes $p$, $\left(\left(\frac{p - 1}{2}\right)!\right)^2\equiv 1\pmod{p}$ 
+if $p\equiv 3\pmod{4}$ and $-1\pmod{p}$ otherwise.
+\item A number is \textit{squarefree} if it is not divisible by the square of any prime. 
+Show that there are arbitrarily large sequences of consecutive numbers that are not squarefree.
+\item (2015 December TST) Prove that for every $n\in \mathbb N$, there exists a set $S$ of $n$ positive integers such that for any 
+two distinct $a,b\in S$, $a-b$ divides $a$ and $b$ but none of the other elements of $S$.
+\end{enumerate}
+
+\section*{Orders and primitive roots}
+More stuff to come.
+
+\section*{Arithmetical functions}
+
+An arithmetical function is any map $f:\mathbb N\rightarrow \mathbb{C}$. For example, $\varphi$ is an arithmetical function. 
+Define the Dirichlet convolution of two arithmetical functions $f,g$ as $$f*g = \sum_{d|n} f(d)g\left(\frac{n}{d}\right).$$
+Note that the Dirichlet convolution distributes over addition, and if its inputs are two multiplicative
+functions, it gives a multiplicative function. The nice thing about multiplicative functions on computational problems is that
+they are quite easy to compute, as one simply has to be able to evaluate the multiplicative function at prime powers. 
+
+\begin{theorem} 
+
+We have that the following hold: 
+
+\begin{enumerate}
+\item $f*g = g*f$
+\item $(f*g)*h = f*(g*h)$
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+The first one follows immediately from the fact that divisors $d$ of $n$ correspond to divisors $\frac{n}{d}$ of $n$.
+
+The second one follows from the definition of divisor convolutions like so: 
+
+$$h*(f*g) = (f*g)*h = \sum_{ab = n}\left(\sum_{cd = a}f(c)g(d)\right)h(b) = \sum_{bcd = n}f(c)g(d)h(b).$$
+
+Note that this is symmetric in $f, g, h$, so the desired result follows by permuting $f, g, h$ and using commutativity.
+
+\end{proof}
+
+Let the identity arithmetical function $\delta(n) = 1$ if $n = 1$ and $0$ otherwise. Then, this satisfies the following very 
+nice identity: $f*\delta = f$. Also, define the M\"obius function $\mu(n)$ to be $0$ if n is not squarefree, and $(-1)^{\omega(n)}$
+if $n$ is squarefree, where $\omega(n)$ is the number of distinct prime divisors of $n$. Also, let $1(n) = 1$ for all $n$.
+
+Then, we have the following:
+
+\begin{lemma}
+$$\mu * 1 = \delta$$
+\end{lemma}
+
+\begin{proof}
+Note that $\mu$ is multiplicative, as is $\delta$ so it is sufficient to check that this holds for prime powers. However, this follows
+trivially, as $\sum_{d|p^k}\mu(d) = \mu(p^0) +\dots + \mu(p^k)$. If $k = 0$, then we are done. Otherwise, this equals 
+$\mu(1) + \mu(p) = 0 = \delta(p^k)$ as desired, since $\mu$ vanishes on powers of $p$ greater than $p$.
+\end{proof}
+
+\begin{theorem}[M\"obius inversion]
+For any arithmetical functions $f,g$, we have
+$$f(n) = \sum_{d|n}g(d) \iff g(n) = \sum_{d|n} f(d)\mu\left(\frac{n}{d}\right).$$
+
+\end{theorem}
+
+\begin{proof}
+The statement is equivalent to showing that $f = g*1\iff g = f*\mu$. 
+Note that we have that $f = g*1\Rightarrow f*\mu = (g * 1)*\mu = g * (1 * \mu) = g*\delta = g$. In the other direction, we have that
+$g = f * \mu\Rightarrow g * 1 = f * \mu * 1 = f * (\mu * 1) = f * \delta = f$ as desired.
+\end{proof}
+\subsection*{Problems}
+
+
+\begin{enumerate}
+\item Call a finite sequence $S$ of 0s and 1s \textit{primitive} if there does not exist a shorter sequence that can be repeated to 
+form $S$. For example, $110101$ is primitive, while $101101$ is not. Compute the number of primitive sequences of length $2015$.
+\item Call an integer $3$-free if it is not divisible by $p^3$ for any prime $p$. Find the number of $3$-free integers less than 1000.
+\item Compute $\tau(1) + \dots + \tau(100)$.
+
 \end{enumerate}
 \end{document}
