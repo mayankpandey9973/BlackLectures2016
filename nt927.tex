@@ -18,8 +18,8 @@
 A useful way of computing the greatest common divisors of integers is by using the following fact: $(a, b) = (a, a - b)$ for all 
 $a, b\in\mathbb{Z}$. 
 The proof that this terminates relies on the following fact: for all $a, b\in\mathbb{Z}$, there exist $q,r\in\mathbb{Z}$ s.t. 
-$|r|\le \frac{|b|}{2}$. Then, we can repeatedly use the fact that $(a, b) = (r, b)$ to quickly compute the gcd of two numbers.
-This process is called the Euclidean algorithm, and it is quite useful in the settings in which one can get it to work. 
+$a = qb + r, |r|\le \frac{|b|}{2}$. Then, we can repeatedly use the fact that $(a, b) = (r, b)$ to quickly compute the gcd of 
+two numbers. This process is called the Euclidean algorithm, and it is quite useful in the settings in which one can get it to work. 
 
 \begin{lemma}[B\'ezout]
 For two relatively prime $a,b$, there exist $x,y\in\mathbb{Z}$ s.t. $ax + by = 1$. 
