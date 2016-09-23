@@ -1,0 +1,33 @@
+\documentclass{article}
+\usepackage{amsmath, amsfonts}
+\begin{document}
+\title{NT Problems}
+\maketitle
+
+\begin{enumerate}
+\item Let $\sigma(n)$ be the sum of the divisors of $n$, and let $\varphi(n)$ be the number of $0\le d < n$ such that $(n, d) = 1$.
+Compute $$\sum_{d|2016}\frac{\phi(d)}{\sigma(d)}.$$ 
+Here, the sum goes over the divisors of $n$. For example, we have that $\sum_{d|15} d^2 = 1^2 + 3^2 + 5^2 + 15^2$.
+\item Compute $\tau(1) + \dots + \tau(100)$ where $\tau(n)$ is the number of divisors of $n$.
+\item It is well known that $\sum_{n} n^{-2} = \frac{\pi^2}{6}$. Let $t_j(n)$ be the number of ways to write $n$ as the product 
+of $j$ integers greater than $1$, where the order matters. Compute $\sum_{n}t_2(n)n^{-2}.$
+\item Call a some $n$ \textit{good} if there does not exist some prime whose square exactly divides it, i.e. 
+$p^2 | n\Rightarrow p^3|n$. Show that there exist arbitrarily large gaps between consecutive \textit{good} numbers.
+\item Define the Ramanujan sum $c_q(n)$ as $$c_q(n) = \underset{(a, q) = 1}{\sum_{a = 1}^q} e\left(-\frac{an}{q}\right).$$ 
+Show that $$c_q(n) = \frac{\mu(q/(q, n))\varphi(q)}{\varphi(q/(q, n))}$$ where the M\"obuis function $\mu(n)$ is $0$ if 
+$n$ is divisible by the square of a prime, and $(-1)^{\omega(n)}$ otherwise, where $\omega(n)$ is the number of prime factors of $n$.
+\item Let 
+\[
+\chi_3(n) = \begin{cases}
+1 & n\equiv 1\pmod{3} \\
+-1 & n\equiv 2\pmod{3} \\
+0 & n\equiv 0\pmod{3} \\
+\end{cases}
+\] 
+be the number of divisors of $n$. Also, let $f(n) = \chi_3(m)$, where $m$ is such that $n = 3^{m}k$ for some $k$ not divisible by $3$.
+Find the maximum value of $f(1) + \dots + f(n)$ for $0 < n\le 1000.$
+\item Call a finite set $S \subset\mathbb{C}$ \textit{good} if for all $z\in S, n\in\mathbb{Z}, z^n\in S$. Find the maximum magnitude
+of the sum of the elements of a \textit{good} set of size at most $1000$.
+\end{enumerate}
+
+\end{document}
